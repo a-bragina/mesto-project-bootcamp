@@ -12,6 +12,10 @@
     line-height: 22px;
 }
 
+.button__btn-save:hover {
+    opacity: .8;
+}
+
 @media (max-width: 560px) {
     .button__btn-save {
         margin-top: 15px;
