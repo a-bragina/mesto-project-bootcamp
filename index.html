@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <title>Mesto</title>
+  </head>
+  <body class="page">
+    <div class="wrapper">
+      <header class="header wrapper__header">
+        <img class="logo" src="images/logo/logo.svg" alt="Логотип" />
+      </header>
+      <main class="content">
+        <section class="profile wrapper__profile">
+          <div class="profile__container">
+            <img class="avatar" src="images/avatar/avatar.webp" alt="Аватар" />
+            <div class="profile__info">
+              <div class="profile__name">
+                <div class="profile__user-name">Чили Пеппер</div>
+                <button class="button button__btn-edit"></button>
+              </div>
+              <div class="profile__user-info">Сладкий пирожочек</div>
+            </div>
+          </div>
+          <button class="button button__btn-add"></button>
+        </section>
+        <section class="elements">
+          <div class="element">
+            <img
+              class="element__illustration"
+              src="images/elements/img1.webp"
+              alt=""
+            />
+            <div class="element__info">
+              <p class="element__text">
+                Ты приходишь в мою лежанку, но ты приходишь без уважения
+              </p>
+              <button class="button button__btn-like"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__illustration"
+              src="images/elements/img2.webp"
+              alt=""
+            />
+            <div class="element__info">
+              <p class="element__text">Погнали!</p>
+              <button class="button button__btn-like"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__illustration"
+              src="images/elements/img3.webp"
+              alt=""
+            />
+            <div class="element__info">
+              <p class="element__text">Устал</p>
+              <button class="button button__btn-like"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__illustration"
+              src="images/elements/img4.webp"
+              alt=""
+            />
+            <div class="element__info">
+              <p class="element__text">У маяка в Мержаново</p>
+              <button class="button button__btn-like"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__illustration"
+              src="images/elements/img5.webp"
+              alt=""
+            />
+            <div class="element__info">
+              <p class="element__text">Люблю осень</p>
+              <button class="button button__btn-like"></button>
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__illustration"
+              src="images/elements/img6.webp"
+              alt=""
+            />
+            <div class="element__info">
+              <p class="element__text">Первая встреча с морем</p>
+              <button class="button button__btn-like"></button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__text">&copy; 2022 Mesto Russia</p>
+      </footer>
+    </div>
+    <div class="popup">
+      <div class="popup__container">
+        <button class="button__btn-close"></button>
+        <div class="wrapper__popup">
+          <p class="popup__title">Редактировать профиль</p>
+          <form>
+            <input type="text" placeholder="Чили Пеппер" class="popup__input" />
+            <input
+              type="text"
+              placeholder="Сладкий пирожочек"
+              class="popup__input"
+            />
+            <button type="submit" class="button__btn-save">Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

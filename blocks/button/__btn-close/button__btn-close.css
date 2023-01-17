@@ -1,0 +1,23 @@
+.button__btn-close {
+    background-image: url(../../../images/buttons/btn-close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+  
+    background-color: transparent;
+
+    border: none;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+}
+
+@media (max-width: 560px) {
+    .button__btn-close {
+        width: 20px;
+        height: 20px;
+        right: 0;
+        top: -36px;
+    }
+}

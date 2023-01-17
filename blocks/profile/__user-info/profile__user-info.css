@@ -1,0 +1,22 @@
+.profile__user-info {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    align-self: center;
+  
+}
+
+@media (max-width: 1080px) {
+    .profile__user-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile__user-info {
+        font-size: clamp(14px, 4vw, 18px);
+        line-height: clamp(17px, 4vw, 22px);
+    }
+}

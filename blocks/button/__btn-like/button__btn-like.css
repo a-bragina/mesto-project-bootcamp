@@ -1,0 +1,17 @@
+.button__btn-like {
+    margin: 0;
+    padding: 0;
+    background-image: url(../../../images/buttons/btn-like.svg);
+    background-repeat: no-repeat;
+
+    border: none;
+    background-color: var(--primary-color);
+
+    background-position: center;
+    
+    width: 22px;
+    height: 19px;
+   
+  
+}
+

@@ -1,0 +1,17 @@
+.profile__user-name {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    align-self: center;
+    background-size: cover;
+    grid-area: name;
+}
+
+@media (max-width: 768px) {
+    .profile__user-name {
+        font-size: clamp(27px, 8vw, 42px);
+        line-height: clamp(33px, 10vw, 48px);
+    }
+}
