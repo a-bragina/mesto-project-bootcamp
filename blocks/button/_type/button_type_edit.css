@@ -1,8 +1,8 @@
-.button__btn-edit {
+.button_type_edit {
     width: 24px;
     height: 24px;
     border: 1px var(--primary-color) solid;
-    background-color: var(--bg-color);
+    background-color: transparent;
     align-self: center;
     grid-area: edit;
     background-image: url(../../../images/buttons/btn-edit-pen.svg);
@@ -11,8 +11,8 @@
 }
 
 @media (max-width: 768px) {
-    .button__btn-edit {
-        width: clamp(18px, 10vw, 24px);
-        height: clamp(18px, 10vw, 24px);
+    .button_type_edit {
+        width: clamp(18px, 4vw, 24px);
+        height: clamp(18px, 4vw, 24px);
     }
 }

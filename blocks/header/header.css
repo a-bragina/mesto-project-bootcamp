@@ -1,7 +1,13 @@
 .header {
-    border-bottom: 1px var(--secondary-color) solid;
-    height: 74px; /* надо что-то другое придумать наверное */
+    border-bottom: 1px rgba(84, 84, 84, .7) solid;
     width: 100%;
     display: flex;
     align-items: flex-end;
+
+}
+
+@media (max-width: 320px) {
+    .header {
+        height: 56px;
+    }
 }

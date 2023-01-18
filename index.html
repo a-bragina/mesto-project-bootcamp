@@ -7,91 +7,93 @@
     <title>Mesto</title>
   </head>
   <body class="page">
-    <div class="wrapper">
-      <header class="header wrapper__header">
+    <div class="container-header">
+      <header class="header">
         <img class="logo" src="images/logo/logo.svg" alt="Логотип" />
       </header>
+    </div>
+    <div class="wrapper">
       <main class="content">
         <section class="profile wrapper__profile">
           <div class="profile__container">
             <img class="avatar" src="images/avatar/avatar.webp" alt="Аватар" />
             <div class="profile__info">
               <div class="profile__name">
-                <div class="profile__user-name">Чили Пеппер</div>
-                <button class="button button__btn-edit"></button>
+                <h1 class="profile__user-name">Чили Пеппер</h1>
+                <button class="button button_type_edit" type="button"></button>
               </div>
-              <div class="profile__user-info">Сладкий пирожочек</div>
+              <p class="profile__user-info">Сладкий пирожочек</p>
             </div>
           </div>
-          <button class="button button__btn-add"></button>
+          <button class="button button_type_add" type="button"></button>
         </section>
         <section class="elements">
           <div class="element">
             <img
               class="element__illustration"
               src="images/elements/img1.webp"
-              alt=""
+              alt="У лежанки"
             />
             <div class="element__info">
-              <p class="element__text">
+              <h2 class="element__text">
                 Ты приходишь в мою лежанку, но ты приходишь без уважения
-              </p>
-              <button class="button button__btn-like"></button>
+              </h2>
+              <button class="button button_type_like" type="button"></button>
             </div>
           </div>
           <div class="element">
             <img
               class="element__illustration"
               src="images/elements/img2.webp"
-              alt=""
+              alt="За рулем"
             />
             <div class="element__info">
-              <p class="element__text">Погнали!</p>
-              <button class="button button__btn-like"></button>
+              <h2 class="element__text">Погнали!</h2>
+              <button class="button button_type_like" type="button"></button>
             </div>
           </div>
           <div class="element">
             <img
               class="element__illustration"
               src="images/elements/img3.webp"
-              alt=""
+              alt="Спит"
             />
             <div class="element__info">
-              <p class="element__text">Устал</p>
-              <button class="button button__btn-like"></button>
+              <h2 class="element__text">Устал</h2>
+              <button class="button button_type_like" type="button"></button>
             </div>
           </div>
           <div class="element">
             <img
               class="element__illustration"
               src="images/elements/img4.webp"
-              alt=""
+              alt="На фоне маяка в Мержаново"
             />
             <div class="element__info">
-              <p class="element__text">У маяка в Мержаново</p>
-              <button class="button button__btn-like"></button>
+              <h2 class="element__text">У маяка в Мержаново</h2>
+              <button class="button button_type_like" type="button"></button>
             </div>
           </div>
           <div class="element">
             <img
               class="element__illustration"
               src="images/elements/img5.webp"
-              alt=""
+              alt="Осенью в листьях"
             />
             <div class="element__info">
-              <p class="element__text">Люблю осень</p>
-              <button class="button button__btn-like"></button>
+              <h2 class="element__text">Люблю осень</h2>
+              <button class="button button_type_like" type="button"></button>
             </div>
           </div>
           <div class="element">
             <img
               class="element__illustration"
               src="images/elements/img6.webp"
-              alt=""
+              alt="У моря"
             />
             <div class="element__info">
-              <p class="element__text">Первая встреча с морем</p>
-              <button class="button button__btn-like"></button>
+              <h2 class="element__text">Первая встреча с морем</h2>
+              <button class="button button_type_like" type="button"></button>
             </div>
           </div>
         </section>
@@ -102,19 +104,26 @@
     </div>
     <div class="popup">
       <div class="popup__container">
-        <button class="button__btn-close"></button>
-        <div class="wrapper__popup">
-          <p class="popup__title">Редактировать профиль</p>
-          <form>
-            <input type="text" placeholder="Чили Пеппер" class="popup__input" />
-            <input
-              type="text"
-              placeholder="Сладкий пирожочек"
-              class="popup__input"
-            />
-            <button type="submit" class="button__btn-save">Сохранить</button>
-          </form>
-        </div>
+        <button class="button button_type_close" type="button"></button>
+
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form name="profile-edid">
+          <input
+            name="name"
+            type="text"
+            placeholder="Чили Пеппер"
+            class="popup__input"
+          />
+          <input
+            name="info"
+            type="text"
+            placeholder="Сладкий пирожочек"
+            class="popup__input"
+          />
+          <button type="submit" class="button button_type_save" type="submit">
+            Сохранить
+          </button>
+        </form>
       </div>
     </div>
   </body>

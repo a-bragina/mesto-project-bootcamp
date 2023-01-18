@@ -1,4 +1,4 @@
-.button__btn-save {
+.button_type_save {
    margin-top: 18px;
     width: 100%;
     padding-top: 14px;
@@ -10,14 +10,16 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    border: none;
+    border-radius: 2px;
 }
 
-.button__btn-save:hover {
+.button_type_save:hover {
     opacity: .8;
 }
 
 @media (max-width: 560px) {
-    .button__btn-save {
+    .button_type_save {
         margin-top: 15px;
         font-size: 14px;
         line-height: 17px;
