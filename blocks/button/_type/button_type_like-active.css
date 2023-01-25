@@ -1,7 +1,7 @@
-.button_type_like {
+.button_type_like-active {
     margin: 0;
     padding: 0;
-    background-image: url(../../../images/buttons/btn-like.svg);
+    background-image: url(../../../images/buttons/btn-like-active.svg);
     background-repeat: no-repeat;
 
     border: none;
@@ -14,8 +14,3 @@
    
   
 }
-
-.button_type_like:hover {
-    opacity: .5;
-}
-

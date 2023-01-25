@@ -1,0 +1,10 @@
+.element__illustration_big-view {
+    max-width: 75vw;
+    max-height: 75vh;
+    align-self: center;
+    border-radius: 0;
+   background-size: contain;
+   width: auto;
+   height: auto;
+   position: relative;
+}

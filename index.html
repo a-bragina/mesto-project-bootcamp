@@ -27,98 +27,29 @@
           </div>
           <button class="button button_type_add" type="button"></button>
         </section>
-        <section class="elements">
-          <div class="element">
-            <img
-              class="element__illustration"
-              src="images/elements/img1.webp"
-              alt="У лежанки"
-            />
-            <div class="element__info">
-              <h2 class="element__text">
-                Ты приходишь в мою лежанку, но ты приходишь без уважения
-              </h2>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__illustration"
-              src="images/elements/img2.webp"
-              alt="За рулем"
-            />
-            <div class="element__info">
-              <h2 class="element__text">Погнали!</h2>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__illustration"
-              src="images/elements/img3.webp"
-              alt="Спит"
-            />
-            <div class="element__info">
-              <h2 class="element__text">Устал</h2>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__illustration"
-              src="images/elements/img4.webp"
-              alt="На фоне маяка в Мержаново"
-            />
-            <div class="element__info">
-              <h2 class="element__text">У маяка в Мержаново</h2>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__illustration"
-              src="images/elements/img5.webp"
-              alt="Осенью в листьях"
-            />
-            <div class="element__info">
-              <h2 class="element__text">Люблю осень</h2>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__illustration"
-              src="images/elements/img6.webp"
-              alt="У моря"
-            />
-            <div class="element__info">
-              <h2 class="element__text">Первая встреча с морем</h2>
-              <button class="button button_type_like" type="button"></button>
-            </div>
-          </div>
-        </section>
+        <section class="elements"></section>
       </main>
       <footer class="footer">
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
       </footer>
     </div>
-    <div class="popup">
+    <div class="popup popup_type_profile">
       <div class="popup__container">
         <button class="button button_type_close" type="button"></button>
 
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="profile-edid">
+        <form name="profile-edit" class="profile-form">
           <input
             name="name"
             type="text"
-            placeholder="Чили Пеппер"
-            class="popup__input"
+            value="Чили Пеппер"
+            class="popup__input popup__input_type_name"
           />
           <input
             name="info"
             type="text"
-            placeholder="Сладкий пирожочек"
-            class="popup__input"
+            value="Сладкий пирожочек"
+            class="popup__input popup__input_type_job"
           />
           <button type="submit" class="button button_type_save" type="submit">
             Сохранить
@@ -126,5 +57,57 @@
         </form>
       </div>
     </div>
+
+    <div class="popup popup_type_photo">
+      <div class="popup__container">
+        <button class="button button_type_close" type="button"></button>
+
+        <h2 class="popup__title">Новое место</h2>
+        <form name="photo-add" class="photo-form">
+          <input
+            name="name"
+            type="text"
+            value=""
+            placeholder="Название"
+            class="popup__input popup__input_type_place-name"
+            required
+          />
+          <input
+            name="info"
+            type="text"
+            value=""
+            placeholder="Ссылка на картинку"
+            class="popup__input popup__input_type_photo-url"
+            required
+          />
+          <button type="submit" class="button button_type_save" type="submit">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_big-view">
+      <div class="popup__container popup__container_big-view">
+        <button class="button button_type_close-bv" type="button"></button>
+        <img
+          class="element__illustration element__illustration_big-view"
+          src=""
+        />
+        <p class="element__text element__text_big-view"></p>
+      </div>
+    </div>
+
+    <template id="photo-grid">
+      <div class="element">
+        <img class="element__illustration" />
+        <img class="element__trash" src="images/buttons/btn-trash.svg" />
+        <div class="element__info">
+          <h2 class="element__text"></h2>
+          <button class="button button_type_like" type="button"></button>
+        </div>
+      </div>
+    </template>
+    <script src="script.js"></script>
   </body>
 </html>
