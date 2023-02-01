@@ -1,0 +1,5 @@
+.button_type_save-inactive {
+    background-color: var(--primary-color);
+    color: rgba(84, 84, 84, .2);
+    border: 1px rgba(84, 84, 84, .2) solid;
+}

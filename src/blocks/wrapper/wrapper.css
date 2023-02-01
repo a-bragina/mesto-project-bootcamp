@@ -1,0 +1,22 @@
+.wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 36.25px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+
+
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding-left: 19px;
+        padding-right: 19px;
+        padding-top: 28px;
+        padding-bottom: 36px;
+    }
+}

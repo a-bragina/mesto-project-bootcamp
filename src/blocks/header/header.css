@@ -1,0 +1,16 @@
+.header {
+    border-bottom: 1px rgba(84, 84, 84, .7) solid;
+    width: 100%;
+    display: flex;
+    
+
+
+}
+
+
+
+@media (max-width: 320px) {
+    .header {
+        height: 56px;
+    }
+}

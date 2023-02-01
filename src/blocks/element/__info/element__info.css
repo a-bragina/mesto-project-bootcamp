@@ -1,0 +1,18 @@
+.element__info {
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
+  
+   
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding-left: 21px;
+    padding-right: 30px;
+    padding-top: 25px;
+    padding-bottom: 31px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   border-radius: 0 0 10px 10px;
+}

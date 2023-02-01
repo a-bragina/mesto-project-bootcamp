@@ -1,0 +1,25 @@
+.container-header {
+    width: 100%;
+    padding-top: 45px;
+    padding-left: 200px;
+    padding-right: 200px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .container-header {
+        padding-left: 19px;
+        padding-right: 19px;
+        padding-top: 28px;
+        padding-bottom: 36px;
+    }
+}
+
+@media (max-width: 320px) {
+    .container-header {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 28px;
+        padding-bottom: 38.25px;
+    }
+}
