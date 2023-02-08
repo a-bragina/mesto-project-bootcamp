@@ -28,7 +28,7 @@ export function createCard(name, link, likesNumber, likesArr, ownerId, cardId) {
   if (ownerId !== "ec533366206c7cdb342d7b32") {
     trash.style.display = "none";
   }
-
+  console.log(arguments);
   cardPhoto.src = link;
   likesAmount.textContent = likesNumber;
   cardPhoto.alt = "иллюстрация";
@@ -80,7 +80,18 @@ const photoProfileForm = document.querySelector(".form_type_photo");
 
 function handlePhotoFormSubmit(evt) {
   evt.preventDefault();
-  createNewCard();
+  createNewCard().then((data) => {
+    const newElement = createCard(
+      data.name,
+      data.link,
+      data.likes.length,
+      data.likes,
+      data.owner._id,
+      data._id
+    );
+    console.log(newElement);
+    elements.prepend(newElement);
+  });
 
   closePopup(popupPhotoAdd);
 

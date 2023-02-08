@@ -1,21 +1,6 @@
 import { userName, userJob, userAvatar } from "./utils.js";
-import {
-  createCard,
-  photoNameInput,
-  photoUrlInput,
-  checkLikeColor,
-} from "./card.js";
-import {
-  openPopup,
-  closePopup,
-  photoTemplate,
-  elements,
-  popupBig,
-  illustrationBig,
-  textBig,
-  changeAvatarPopup,
-  avatar,
-} from "./utils.js";
+import { createCard, photoNameInput, photoUrlInput } from "./card.js";
+import { elements, avatar } from "./utils.js";
 import { nameInput, jobInput } from "./utils.js";
 import { avatarUrlInput } from "./modal.js";
 
@@ -119,18 +104,6 @@ export const createNewCard = function () {
         return res.json();
       }
       return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .then((data) => {
-      createCard(
-        data.name,
-        data.link,
-        data.likes.length,
-        data.owner._id,
-        data._id
-      );
-    })
-    .then((card) => {
-      elements.append(card);
     })
     .catch((err) => {
       console.log(err);

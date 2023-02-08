@@ -7,16 +7,10 @@ import {
   popupPhotoAdd,
   popupList,
   profileForm,
-  nameInput,
-  jobInput,
-  profileName,
-  profileJob,
   changeAvatarPopup,
   avatarBox,
   avatarForm,
 } from "./utils.js";
-
-import { toggleButtonState } from "./validate.js";
 
 import { editProfileInfo, changeAvatar } from "./api.js";
 
