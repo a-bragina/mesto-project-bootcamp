@@ -1,21 +1,28 @@
-import { openPopup, closePopup } from "./utils.js";
+import {
+  openPopup,
+  closePopup,
+  buttonEdit,
+  popupInfoEdit,
+  buttonAdd,
+  popupPhotoAdd,
+  popupList,
+  profileForm,
+  nameInput,
+  jobInput,
+  profileName,
+  profileJob,
+  changeAvatarPopup,
+  avatarBox,
+  avatarForm,
+} from "./utils.js";
 
-const buttonEdit = document.querySelector(".button_type_edit");
-const popupInfoEdit = document.querySelector(".popup_type_profile");
+import { toggleButtonState } from "./validate.js";
 
-const buttonAdd = document.querySelector(".button_type_add");
-const popupPhotoAdd = document.querySelector(".popup_type_photo");
-
-const popupList = Array.from(document.querySelectorAll(".popup"));
+import { editProfileInfo, changeAvatar } from "./api.js";
 
 popupList.forEach(function (popup) {
   popup.addEventListener("click", function (evt) {
     if (evt.target === popup) {
-      closePopup(popup);
-    }
-  });
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
       closePopup(popup);
     }
   });
@@ -28,23 +35,29 @@ buttonEdit.addEventListener("click", function () {
 buttonAdd.addEventListener("click", function () {
   openPopup(popupPhotoAdd);
 });
-
-const profileForm = document.querySelector(".profile-form");
-const nameInput = document.querySelector(".popup__input_type_name");
-const jobInput = document.querySelector(".popup__input_type_job");
-const profileName = document.querySelector(".profile__user-name");
-const profileJob = document.querySelector(".profile__user-info");
-
+avatarBox.addEventListener("click", function () {
+  openPopup(changeAvatarPopup);
+});
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
+  editProfileInfo();
 
   closePopup(popupInfoEdit);
 
   evt.target.reset();
 }
+export const avatarUrlInput = document.querySelector(
+  ".form__input_type_avatar"
+);
+function handleAvatarFormSubmit(evt) {
+  evt.preventDefault();
+  changeAvatar();
 
+  closePopup(changeAvatarPopup);
+
+  evt.target.reset();
+}
+avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 export { popupPhotoAdd };

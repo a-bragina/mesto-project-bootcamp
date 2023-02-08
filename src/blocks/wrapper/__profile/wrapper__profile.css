@@ -1,9 +1,0 @@
-.wrapper__profile {
-    margin-bottom: 67px;
-}
-
-@media (max-width: 320px) {
-    .wrapper__profile {
-        margin-bottom: 36px;
-    }
-}

@@ -1,69 +1,72 @@
-import { openPopup, closePopup } from "./utils.js";
+import {
+  openPopup,
+  closePopup,
+  photoTemplate,
+  elements,
+  popupBig,
+  illustrationBig,
+  textBig,
+} from "./utils.js";
 import { popupPhotoAdd } from "./modal.js";
 
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+import { createNewCard, deleteCard, putLike, deleteLike } from "./api.js";
 
-const photoTemplate = document.querySelector("#photo-grid").content;
-const elements = document.querySelector(".elements");
-const popupBig = document.querySelector(".popup_big-view");
-const illustrationBig = document.querySelector(
-  ".element__illustration_big-view"
+export const photoNameInput = document.querySelector(
+  ".form__input_type_place-name"
 );
-const textBig = document.querySelector(".element__text_big-view");
+export const photoUrlInput = document.querySelector(
+  ".form__input_type_photo-url"
+);
 
-function createCard(item) {
+export function createCard(name, link, likesNumber, likesArr, ownerId, cardId) {
   const photoElement = photoTemplate.querySelector(".element").cloneNode(true);
   const cardPhoto = photoElement.querySelector(".element__illustration");
   const cardText = photoElement.querySelector(".element__text");
-  const photoNameInput = document.querySelector(
-    ".popup__input_type_place-name"
-  );
-  const photoUrlInput = document.querySelector(".popup__input_type_photo-url");
-  if (!item) {
-    cardPhoto.src = photoUrlInput.value;
-  } else {
-    cardPhoto.src = item.link;
+  const likesAmount = photoElement.querySelector(".likes-amount");
+  const trash = photoElement.querySelector(".element__trash");
+  const like = photoElement.querySelector(".button_type_like");
+  if (ownerId !== "ec533366206c7cdb342d7b32") {
+    trash.style.display = "none";
   }
+
+  cardPhoto.src = link;
+  likesAmount.textContent = likesNumber;
   cardPhoto.alt = "иллюстрация";
 
-  if (!item) {
-    cardText.textContent = photoNameInput.value;
-  } else {
-    cardText.textContent = item.name;
+  cardText.textContent = name;
+
+  const isLikedByUser = likesArr.find((like) => {
+    return like._id === "ec533366206c7cdb342d7b32";
+  });
+  if (isLikedByUser) {
+    like.classList.add("button_type_like-active");
   }
 
   photoElement.addEventListener("click", function (evt) {
-    if (evt.target.classList.contains("button_type_like")) {
-      evt.target.classList.toggle("button_type_like-active");
+    if (
+      evt.target.classList.contains("button_type_like") &&
+      !evt.target.classList.contains("button_type_like-active")
+    ) {
+      putLike(cardId).then(
+        (data) => (likesAmount.textContent = data.likes.length)
+      );
+
+      evt.target.classList.add("button_type_like-active");
+    } else if (
+      evt.target.classList.contains("button_type_like") &&
+      evt.target.classList.contains("button_type_like-active")
+    ) {
+      deleteLike(cardId).then(
+        (data) => (likesAmount.textContent = data.likes.length)
+      );
+      evt.target.classList.remove("button_type_like-active");
     } else if (evt.target.classList.contains("element__trash")) {
+      deleteCard(cardId);
       evt.target.closest(".element").remove();
     } else if (evt.target.classList.contains("element__illustration")) {
       illustrationBig.src = cardPhoto.src;
+      illustrationBig.alt = "иллюстрация";
+
       textBig.textContent = cardText.textContent;
       openPopup(popupBig);
     }
@@ -71,26 +74,17 @@ function createCard(item) {
   return photoElement;
 }
 
-const uploadCards = initialCards.forEach(function (item) {
-  const newPhotoElement = createCard(item);
-  elements.append(newPhotoElement);
-});
-
 /* создание карточки с фото через попап */
 
-const photoProfileForm = document.querySelector(".photo-form");
+const photoProfileForm = document.querySelector(".form_type_photo");
 
 function handlePhotoFormSubmit(evt) {
   evt.preventDefault();
-  const photoProfileElement = createCard();
-
-  elements.prepend(photoProfileElement);
-
-  evt.target.reset();
+  createNewCard();
 
   closePopup(popupPhotoAdd);
+
+  evt.target.reset();
 }
 
 photoProfileForm.addEventListener("submit", handlePhotoFormSubmit);
-
-export { uploadCards };

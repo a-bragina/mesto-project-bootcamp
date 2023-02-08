@@ -8,5 +8,11 @@
     row-gap: 20px;
     justify-items: center;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
+    padding-top: 47.25px;
+}
 
+@media (max-width: 320px) {
+    .elements {
+        padding-top: 36px;
+    }
 }
