@@ -11,3 +11,9 @@
         gap: 26px;
     }
 }
+
+@media (max-width: 320px) {
+    .profile__container {
+        gap: 22.25px;
+    }
+}

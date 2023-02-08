@@ -12,3 +12,8 @@
         margin-bottom: 14px;
     }
 }
+@media (max-width: 320px) {
+    .profile__name {
+        gap: 10px;
+    }
+}

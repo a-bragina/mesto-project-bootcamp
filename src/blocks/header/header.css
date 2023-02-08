@@ -1,8 +1,7 @@
 .header {
     border-bottom: 1px rgba(84, 84, 84, .7) solid;
-    width: 100%;
-    display: flex;
-    
+    padding-top: 45px;
+    box-sizing: border-box;
 
 
 }
@@ -11,6 +10,6 @@
 
 @media (max-width: 320px) {
     .header {
-        height: 56px;
+        padding-top: 28px;
     }
 }

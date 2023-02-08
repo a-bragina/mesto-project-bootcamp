@@ -8,10 +8,11 @@
     line-height: 48px;
     align-self: center;
     background-size: cover;
-
+    max-width: 294px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    
     
 }
 
