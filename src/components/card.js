@@ -80,18 +80,20 @@ const photoProfileForm = document.querySelector(".form_type_photo");
 
 function handlePhotoFormSubmit(evt) {
   evt.preventDefault();
-  createNewCard().then((data) => {
-    const newElement = createCard(
-      data.name,
-      data.link,
-      data.likes.length,
-      data.likes,
-      data.owner._id,
-      data._id
-    );
-    console.log(newElement);
-    elements.prepend(newElement);
-  });
+  renderLoading(true);
+  createNewCard()
+    .then((data) => {
+      const newElement = createCard(
+        data.name,
+        data.link,
+        data.likes.length,
+        data.likes,
+        data.owner._id,
+        data._id
+      );
+      elements.prepend(newElement);
+    })
+    .finally(() => renderLoading(false));
 
   closePopup(popupPhotoAdd);
 

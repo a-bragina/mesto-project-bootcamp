@@ -34,7 +34,8 @@ avatarBox.addEventListener("click", function () {
 });
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  editProfileInfo();
+  renderLoading(true);
+  editProfileInfo().finally(() => renderLoading(false));
 
   closePopup(popupInfoEdit);
 
@@ -45,7 +46,8 @@ export const avatarUrlInput = document.querySelector(
 );
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
-  changeAvatar();
+  renderLoading(true);
+  changeAvatar().finally(() => renderLoading(false));
 
   closePopup(changeAvatarPopup);
 
@@ -53,5 +55,12 @@ function handleAvatarFormSubmit(evt) {
 }
 avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
+
+function renderLoading(isLoading) {
+  const buttonSubmit = document.querySelector(".button_type_save");
+  if (isLoading) {
+    buttonSubmit.textContent = "Сохранение...";
+  }
+}
 
 export { popupPhotoAdd };
