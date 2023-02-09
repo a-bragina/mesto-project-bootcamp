@@ -34,9 +34,11 @@ avatarBox.addEventListener("click", function () {
 });
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+  console.log(1);
   renderLoading(true);
+  console.log(2);
   editProfileInfo().finally(() => renderLoading(false));
-
+  console.log(3);
   closePopup(popupInfoEdit);
 
   evt.target.reset();
@@ -56,11 +58,16 @@ function handleAvatarFormSubmit(evt) {
 avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-function renderLoading(isLoading) {
-  const buttonSubmit = document.querySelector(".button_type_save");
-  if (isLoading) {
-    buttonSubmit.textContent = "Сохранение...";
-  }
+export function renderLoading(isLoading) {
+  const submitButtons = document.querySelectorAll(".button_type_save");
+
+  submitButtons.forEach((button) => {
+    if (isLoading) {
+      button.textContent = "Сохранение...";
+    } else {
+      button.textContent = "Сохранить";
+    }
+  });
 }
 
 export { popupPhotoAdd };

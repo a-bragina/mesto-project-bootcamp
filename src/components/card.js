@@ -7,7 +7,7 @@ import {
   illustrationBig,
   textBig,
 } from "./utils.js";
-import { popupPhotoAdd } from "./modal.js";
+import { popupPhotoAdd, renderLoading } from "./modal.js";
 
 import { createNewCard, deleteCard, putLike, deleteLike } from "./api.js";
 
@@ -28,7 +28,6 @@ export function createCard(name, link, likesNumber, likesArr, ownerId, cardId) {
   if (ownerId !== "ec533366206c7cdb342d7b32") {
     trash.style.display = "none";
   }
-  console.log(arguments);
   cardPhoto.src = link;
   likesAmount.textContent = likesNumber;
   cardPhoto.alt = "иллюстрация";

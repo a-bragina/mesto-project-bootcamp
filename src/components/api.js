@@ -43,7 +43,6 @@ export const uploadCardsFromServer = function () {
       return Promise.reject(`Ошибка: ${res.status}`);
     })
     .then((datas) => {
-      console.log(datas);
       return datas.map((data) =>
         createCard(
           data.name,
