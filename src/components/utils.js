@@ -1,3 +1,5 @@
+import { toggleButtonState } from "./validate.js";
+
 const photoTemplate = document.querySelector("#photo-grid").content;
 const elements = document.querySelector(".elements");
 const popupBig = document.querySelector(".popup_big-view");
@@ -30,7 +32,15 @@ const avatar = document.querySelector(".avatar");
 const closeButtons = Array.from(
   document.querySelectorAll(".button_type_close")
 );
-const escClose = (evt) => {
+
+export function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка ${res.status}`);
+}
+
+const closeByEsc = (popup) => (evt) => {
   if (evt.key === "Escape") {
     closePopup(popup);
   }
@@ -38,12 +48,13 @@ const escClose = (evt) => {
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener("keydown", escClose);
+
+  document.addEventListener("keydown", closeByEsc(popup));
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", escClose);
+  document.removeEventListener("keydown", closeByEsc(popup));
 }
 closeButtons.forEach((button) => {
   const popup = button.closest(".popup");

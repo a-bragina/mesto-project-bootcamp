@@ -8,7 +8,8 @@ import {
   textBig,
 } from "./utils.js";
 import { popupPhotoAdd, renderLoading } from "./modal.js";
-
+import { userId } from "./index.js";
+import { avatarUrlInput } from "./modal.js";
 import { createNewCard, deleteCard, putLike, deleteLike } from "./api.js";
 
 export const photoNameInput = document.querySelector(
@@ -25,51 +26,60 @@ export function createCard(name, link, likesNumber, likesArr, ownerId, cardId) {
   const likesAmount = photoElement.querySelector(".likes-amount");
   const trash = photoElement.querySelector(".element__trash");
   const like = photoElement.querySelector(".button_type_like");
-  if (ownerId !== "ec533366206c7cdb342d7b32") {
+  if (ownerId !== userId) {
     trash.style.display = "none";
   }
   cardPhoto.src = link;
   likesAmount.textContent = likesNumber;
-  cardPhoto.alt = "иллюстрация";
+  cardPhoto.alt = name;
 
   cardText.textContent = name;
 
   const isLikedByUser = likesArr.find((like) => {
-    return like._id === "ec533366206c7cdb342d7b32";
+    return like._id === userId;
   });
   if (isLikedByUser) {
     like.classList.add("button_type_like-active");
   }
 
-  photoElement.addEventListener("click", function (evt) {
+  like.addEventListener("click", (evt) => {
     if (
       evt.target.classList.contains("button_type_like") &&
       !evt.target.classList.contains("button_type_like-active")
     ) {
-      putLike(cardId).then(
-        (data) => (likesAmount.textContent = data.likes.length)
-      );
-
-      evt.target.classList.add("button_type_like-active");
+      putLike(cardId)
+        .then((data) => (likesAmount.textContent = data.likes.length))
+        .then(() => evt.target.classList.add("button_type_like-active"))
+        .catch((err) => {
+          console.log(err);
+        });
     } else if (
       evt.target.classList.contains("button_type_like") &&
       evt.target.classList.contains("button_type_like-active")
     ) {
-      deleteLike(cardId).then(
-        (data) => (likesAmount.textContent = data.likes.length)
-      );
-      evt.target.classList.remove("button_type_like-active");
-    } else if (evt.target.classList.contains("element__trash")) {
-      deleteCard(cardId);
-      evt.target.closest(".element").remove();
-    } else if (evt.target.classList.contains("element__illustration")) {
-      illustrationBig.src = cardPhoto.src;
-      illustrationBig.alt = "иллюстрация";
-
-      textBig.textContent = cardText.textContent;
-      openPopup(popupBig);
+      deleteLike(cardId)
+        .then((data) => (likesAmount.textContent = data.likes.length))
+        .then(() => evt.target.classList.remove("button_type_like-active"))
+        .catch((err) => {
+          console.log(err);
+        });
     }
   });
+  trash.addEventListener("click", (evt) => {
+    deleteCard(cardId)
+      .then(() => evt.target.closest(".element").remove())
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  cardPhoto.addEventListener("click", (evt) => {
+    illustrationBig.src = cardPhoto.src;
+    illustrationBig.alt = cardText.textContent;
+
+    textBig.textContent = cardText.textContent;
+    openPopup(popupBig);
+  });
+
   return photoElement;
 }
 
@@ -79,8 +89,8 @@ const photoProfileForm = document.querySelector(".form_type_photo");
 
 function handlePhotoFormSubmit(evt) {
   evt.preventDefault();
-  renderLoading(true);
-  createNewCard()
+  renderLoading(true, evt.target["submit-card-add"]);
+  createNewCard(photoNameInput.value, photoUrlInput.value)
     .then((data) => {
       const newElement = createCard(
         data.name,
@@ -92,11 +102,14 @@ function handlePhotoFormSubmit(evt) {
       );
       elements.prepend(newElement);
     })
-    .finally(() => renderLoading(false));
-
-  closePopup(popupPhotoAdd);
-
-  evt.target.reset();
+    .then(() => {
+      closePopup(popupPhotoAdd);
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => renderLoading(false, evt.target["submit-card-add"]));
 }
 
 photoProfileForm.addEventListener("submit", handlePhotoFormSubmit);

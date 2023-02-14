@@ -10,9 +10,13 @@ import {
   changeAvatarPopup,
   avatarBox,
   avatarForm,
+  avatar,
+  nameInput,
+  jobInput,
 } from "./utils.js";
 
 import { editProfileInfo, changeAvatar } from "./api.js";
+import { userName, userJob, userAvatar } from "./utils.js";
 
 popupList.forEach(function (popup) {
   popup.addEventListener("click", function (evt) {
@@ -23,6 +27,8 @@ popupList.forEach(function (popup) {
 });
 
 buttonEdit.addEventListener("click", function () {
+  nameInput.value = userName.textContent;
+  jobInput.value = userJob.textContent;
   openPopup(popupInfoEdit);
 });
 
@@ -34,40 +40,49 @@ avatarBox.addEventListener("click", function () {
 });
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  console.log(1);
-  renderLoading(true);
-  console.log(2);
-  editProfileInfo().finally(() => renderLoading(false));
-  console.log(3);
-  closePopup(popupInfoEdit);
 
-  evt.target.reset();
+  renderLoading(true, evt.target["submit-profile-edit"]);
+
+  editProfileInfo(nameInput.value, jobInput.value)
+    .then((data) => {
+      userName.textContent = data.name;
+      userJob.textContent = data.about;
+    })
+    .then(() => {
+      closePopup(popupInfoEdit);
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => renderLoading(false, evt.target["submit-profile-edit"]));
 }
 export const avatarUrlInput = document.querySelector(
   ".form__input_type_avatar"
 );
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
-  renderLoading(true);
-  changeAvatar().finally(() => renderLoading(false));
-
-  closePopup(changeAvatarPopup);
-
-  evt.target.reset();
+  renderLoading(true, evt.target["submit-avatar-edit"]);
+  changeAvatar(avatarUrlInput.value)
+    .then((data) => (avatar.src = data.avatar))
+    .then(() => {
+      closePopup(changeAvatarPopup);
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => renderLoading(false, evt.target["submit-avatar-edit"]));
 }
 avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-export function renderLoading(isLoading) {
-  const submitButtons = document.querySelectorAll(".button_type_save");
-
-  submitButtons.forEach((button) => {
-    if (isLoading) {
-      button.textContent = "Сохранение...";
-    } else {
-      button.textContent = "Сохранить";
-    }
-  });
+export function renderLoading(isLoading, button) {
+  if (isLoading) {
+    button.textContent = "Сохранение...";
+  } else {
+    button.textContent = "Сохранить";
+  }
 }
 
 export { popupPhotoAdd };
