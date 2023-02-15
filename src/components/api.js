@@ -1,7 +1,4 @@
-import { photoNameInput, photoUrlInput } from "./card.js";
-
-import { nameInput, jobInput, checkResponse } from "./utils.js";
-import { avatarUrlInput } from "./modal.js";
+import { checkResponse } from "./utils.js";
 
 const config = {
   baseUrl: "https://nomoreparties.co/v1/wbf-cohort-5",

@@ -40,21 +40,22 @@ export function checkResponse(res) {
   return Promise.reject(`Ошибка ${res.status}`);
 }
 
-const closeByEsc = (popup) => (evt) => {
+function closeByEsc(evt) {
   if (evt.key === "Escape") {
-    closePopup(popup);
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
   }
-};
+}
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
 
-  document.addEventListener("keydown", closeByEsc(popup));
+  document.addEventListener("keydown", closeByEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closeByEsc(popup));
+  document.removeEventListener("keydown", closeByEsc);
 }
 closeButtons.forEach((button) => {
   const popup = button.closest(".popup");

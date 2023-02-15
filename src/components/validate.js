@@ -63,18 +63,10 @@ const setEventListeners = (formElement) => {
   );
 
   toggleButtonState(inputList, buttonElement);
-
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       isValid(formElement, inputElement);
-
       toggleButtonState(inputList, buttonElement);
-
-      formElement.addEventListener("reset", () => {
-        setTimeout(() => {
-          toggleButtonState(inputList, buttonElement);
-        }, 0);
-      });
     });
   });
 };
